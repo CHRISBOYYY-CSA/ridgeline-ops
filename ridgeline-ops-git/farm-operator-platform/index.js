@@ -13,12 +13,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ---- Simulated in-memory data ----
 
 const machines = [
-  { id: 'tractor', name: 'Tractor', icon: 'photo-tractor.png', desc: 'General-purpose ploughing, tilling and haulage.', rentRate: 15000, trainFee: 25000 },
-  { id: 'harvester', name: 'Combine Harvester', icon: 'photo-harvester.png', desc: 'Fast, large-scale grain and rice harvesting.', rentRate: 45000, trainFee: 60000 },
-  { id: 'plough', name: 'Plough', icon: 'photo-plough.png', desc: 'Tractor-drawn land preparation and turning of soil.', rentRate: 8000, trainFee: 15000 },
-  { id: 'sprayer', name: 'Boom Sprayer', icon: 'sprayer.svg', desc: 'Even coverage for fertiliser and pest control.', rentRate: 12000, trainFee: 20000 },
-  { id: 'transplanter', name: 'Rice Transplanter', icon: 'transplanter.svg', desc: 'Precision seedling spacing for paddy fields.', rentRate: 18000, trainFee: 30000 },
-  { id: 'tiller', name: 'Power Tiller', icon: 'tiller.svg', desc: 'Compact tilling for smaller plots.', rentRate: 6000, trainFee: 12000 },
+  { id: 'tractor', name: 'Tractor', icon: 'photo-tractor.png', desc: 'General-purpose ploughing, tilling and haulage.', rentRate: 75000, trainFee: 100000 },
+  { id: 'harvester', name: 'Combine Harvester', icon: 'photo-harvester.png', desc: 'Fast, large-scale grain and rice harvesting.', rentRate: 190000, trainFee: 250000 },
+  { id: 'plough', name: 'Plough', icon: 'photo-plough.png', desc: 'Tractor-drawn land preparation and turning of soil.', rentRate: 40000, trainFee: 65000 },
+  { id: 'sprayer', name: 'Boom Sprayer', icon: 'sprayer.svg', desc: 'Even coverage for fertiliser and pest control.', rentRate: 50000, trainFee: 75000 },
+  { id: 'transplanter', name: 'Rice Transplanter', icon: 'transplanter.svg', desc: 'Precision seedling spacing for paddy fields.', rentRate: 85000, trainFee: 130000 },
+  { id: 'tiller', name: 'Power Tiller', icon: 'tiller.svg', desc: 'Compact tilling for smaller plots.', rentRate: 28000, trainFee: 45000 },
 ];
 
 let operators = [
