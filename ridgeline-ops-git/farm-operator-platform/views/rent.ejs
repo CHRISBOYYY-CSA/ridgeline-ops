@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent Machinery — Ridgeline Ops</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Rent Machinery</h2>
+        <p>Need the equipment without hiring an operator? Rent directly, priced per day.</p>
+      </div>
+
+      <% if (confirmed) { %>
+        <div class="confirm-banner">Your rental request has been sent. We'll confirm availability and delivery details shortly.</div>
+      <% } %>
+
+      <div class="hire-two-col">
+        <div class="machine-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <% machines.forEach(m => { %>
+            <div class="machine-card">
+              <img src="/images/<%= m.icon %>" alt="<%= m.name %>" class="<%= m.icon.endsWith('.svg') ? 'icon-img' : 'photo-img' %>" style="height: 110px;">
+              <h3 style="font-size: 1rem;"><%= m.name %></h3>
+              <div class="rates">
+                <div>Per Day<strong>₦<%= m.rentRate.toLocaleString() %></strong></div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <form class="form-card" method="POST" action="/rent">
+          <h3 style="margin-bottom: 18px; color: var(--forest);">Request a Rental</h3>
+          <div class="field">
+            <label for="farmerName">Your Name</label>
+            <input type="text" id="farmerName" name="farmerName" required>
+          </div>
+          <div class="field">
+            <label for="location">Delivery Location</label>
+            <input type="text" id="location" name="location" required>
+          </div>
+          <div class="field">
+            <label for="machine">Machine</label>
+            <select id="machine" name="machine" required>
+              <% machines.forEach(m => { %>
+                <option value="<%= m.id %>"><%= m.name %> — ₦<%= m.rentRate.toLocaleString() %>/day</option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="field">
+            <label for="days">Number of Days</label>
+            <input type="number" id="days" name="days" min="1" value="1" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Rental Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

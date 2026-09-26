@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operator Training — Ridgeline Ops</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Become an Operator</h2>
+        <p>New to machinery? Pick the one you want to learn — training fees are set per machine, based on complexity.</p>
+      </div>
+
+      <% if (confirmedFee !== null) { %>
+        <div class="confirm-banner">You're signed up for training. Fee due: ₦<%= confirmedFee.toLocaleString() %>. Our team will reach out to schedule your sessions.</div>
+      <% } %>
+
+      <div class="hire-two-col">
+        <div class="machine-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <% machines.forEach(m => { %>
+            <div class="machine-card">
+              <img src="/images/<%= m.icon %>" alt="<%= m.name %>" class="<%= m.icon.endsWith('.svg') ? 'icon-img' : 'photo-img' %>" style="height: 100px;">
+              <h3 style="font-size: 1rem;"><%= m.name %></h3>
+              <div class="rates">
+                <div>Training Fee<strong>₦<%= m.trainFee.toLocaleString() %></strong></div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <form class="form-card" method="POST" action="/training">
+          <h3 style="margin-bottom: 18px; color: var(--forest);">Sign Up for Training</h3>
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" required>
+          </div>
+          <div class="field">
+            <label for="machine">Machine You Want to Learn</label>
+            <select id="machine" name="machine" required>
+              <% machines.forEach(m => { %>
+                <option value="<%= m.id %>"><%= m.name %> — ₦<%= m.trainFee.toLocaleString() %></option>
+              <% }) %>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-clay">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

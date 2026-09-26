@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hire an Operator — Ridgeline Ops</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Hire an Operator</h2>
+        <p>Registered operators, ready to work. Pick one and send a request.</p>
+      </div>
+
+      <% if (confirmed) { %>
+        <div class="confirm-banner">Your hire request has been sent. The operator will be notified to confirm availability.</div>
+      <% } %>
+
+      <div class="hire-two-col">
+        <table class="list-table">
+          <thead>
+            <tr><th>Name</th><th>Machine</th><th>Location</th><th>Experience</th><th>Rate/day</th></tr>
+          </thead>
+          <tbody>
+            <% operators.forEach(o => { %>
+              <tr>
+                <td><%= o.name %></td>
+                <td><%= o.machine %></td>
+                <td><%= o.location %></td>
+                <td><%= o.experience %> yrs</td>
+                <td>₦<%= o.rate.toLocaleString() %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+
+        <form class="form-card" method="POST" action="/hire">
+          <h3 style="margin-bottom: 18px; color: var(--forest);">Request a Hire</h3>
+          <div class="field">
+            <label for="farmerName">Your Name</label>
+            <input type="text" id="farmerName" name="farmerName" required>
+          </div>
+          <div class="field">
+            <label for="location">Your Location</label>
+            <input type="text" id="location" name="location" required>
+          </div>
+          <div class="field">
+            <label for="operatorId">Choose Operator</label>
+            <select id="operatorId" name="operatorId" required>
+              <% operators.forEach(o => { %>
+                <option value="<%= o.id %>"><%= o.name %> — <%= o.machine %> (<%= o.location %>)</option>
+              <% }) %>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

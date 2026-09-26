@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ridgeline Ops — Hire, Train, and Rent Farm Machinery Operators</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p style="color: var(--ochre); font-weight: 700; letter-spacing: 0.06em; font-size: 0.85rem; margin-bottom: 12px;">MUSCLE FOR EVERY ACRE</p>
+        <h1>Get the right hands on your farm machinery.</h1>
+        <p class="lede">Ridgeline Ops connects Nigerian farmers with trained operators, offers hands-on training for new operators, and lets you rent the equipment itself — all from one place.</p>
+        <div class="hero-actions">
+          <a href="/hire" class="btn btn-primary">Hire an Operator</a>
+          <a href="/register-operator" class="btn btn-outline">Register as an Operator</a>
+        </div>
+      </div>
+      <img src="/images/hero-tractor.png" alt="Tractor ploughing a field on a Nigerian farm" class="hero-art">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Machinery on the platform</h2>
+        <p>Every operator is tagged by the machine they run, and each machine is also available for direct rental or training.</p>
+      </div>
+      <div class="machine-grid">
+        <% machines.forEach(m => { %>
+          <div class="machine-card">
+            <img src="/images/<%= m.icon %>" alt="<%= m.name %> in use on a Nigerian farm" class="<%= m.icon.endsWith('.svg') ? 'icon-img' : 'photo-img' %>">
+            <h3><%= m.name %></h3>
+            <p class="desc"><%= m.desc %></p>
+            <div class="rates">
+              <div>Rent/day<strong>₦<%= m.rentRate.toLocaleString() %></strong></div>
+              <div>Training<strong>₦<%= m.trainFee.toLocaleString() %></strong></div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How Ridgeline Ops works</h2>
+        <p>Three simple paths depending on what you need.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Need an operator?</h3>
+          <p>Browse registered operators by machine and location, then send a hire request directly.</p>
+        </div>
+        <div class="step">
+          <h3>Want to become one?</h3>
+          <p>Register your skills and machine specialty so farmers can find and hire you.</p>
+        </div>
+        <div class="step">
+          <h3>New to the trade?</h3>
+          <p>Sign up for training on the specific machine you want to learn, at a fee set per machine type.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "ridgeline-ops",
+  "version": "1.0.0",
+  "description": "Ridgeline Ops — simulated marketplace connecting farmers with machinery operators, training, and equipment rental",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ejs": "^3.1.10",
+    "body-parser": "^1.20.2"
+  }
+}
